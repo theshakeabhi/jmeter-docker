@@ -1,0 +1,23 @@
+services:
+  jmeter:
+    build:
+      context: .
+      args:
+        JMETER_VERSION: "5.6.3"
+    container_name: jmeter-cli
+    environment:
+      # Tunables that your JMX can read via ${__P(name,default)}
+      threads: "50"     # -Jthreads=...
+      rampup: "10"      # -Jrampup=...
+      duration: "60"    # -Jduration=...
+      JMETER_HEAP: "-Xms512m -Xmx2048m"
+      JMETER_TESTPLAN: "/testplan/load-test-1.jmx"
+      JMETER_JTL: "/results/results.jtl"
+      JMETER_REPORT: "/reports/html"
+    volumes:
+      - ./testplan:/testplan:ro
+      - ./config:/config:ro
+      - ./results:/results
+      - ./reports:/reports
+    # Example: add extra -J props or override defaults here
+    # command: ["-Jthreads=200", "-Jrampup=30"]

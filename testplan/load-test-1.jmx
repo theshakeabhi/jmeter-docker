@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jmeterTestPlan version="1.2" properties="5.0" jmeter="5.6.3">
+  <hashTree>
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Test Plan">
+      <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
+        <collectionProp name="Arguments.arguments"/>
+      </elementProp>
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
+      <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
+    </TestPlan>
+    <hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group">
+        <intProp name="ThreadGroup.num_threads">1</intProp>
+        <intProp name="ThreadGroup.ramp_time">1</intProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller">
+          <stringProp name="LoopController.loops">1</stringProp>
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+        </elementProp>
+      </ThreadGroup>
+      <hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request">
+          <stringProp name="HTTPSampler.domain">api-pacb-uat.eximpe.com</stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.path">/pg/orders/</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&quot;amount&quot;:&quot;1000.00&quot;,&quot;collection_mode&quot;:&quot;s2s&quot;,&quot;mop_type&quot;:&quot;CREDIT_CARD&quot;,&quot;currency&quot;:&quot;INR&quot;,&quot;reference_id&quot;:&quot;${reference_id}&quot;,&quot;return_url&quot;:&quot;https://api-pacb-uat.eximpe.com/sample-integration/checkout/callback/&quot;,&quot;card_details&quot;:{&quot;nickname&quot;:&quot;MasterCard Credit&quot;,&quot;number&quot;:&quot;5506900480000008&quot;,&quot;cardholder_name&quot;:&quot;John Doe&quot;,&quot;expiry_month&quot;:&quot;05&quot;,&quot;expiry_year&quot;:&quot;2030&quot;,&quot;cvv&quot;:&quot;123&quot;,&quot;network&quot;:&quot;MASTERCARD&quot;,&quot;identifier&quot;:&quot;hello&quot;,&quot;save_card&quot;:false},&quot;buyer&quot;:{&quot;name&quot;:&quot;John Doe&quot;,&quot;email&quot;:&quot;john.doe@example.com&quot;,&quot;phone&quot;:&quot;+919876543210&quot;,&quot;address&quot;:{&quot;line_1&quot;:&quot;123 Main Street&quot;,&quot;line_2&quot;:&quot;Apt 4B&quot;,&quot;city&quot;:&quot;City&quot;,&quot;state&quot;:&quot;State&quot;,&quot;postal_code&quot;:&quot;123456&quot;},&quot;ip_address&quot;:&quot;192.168.1.100&quot;,&quot;user_agent&quot;:&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36&quot;},&quot;product&quot;:{&quot;name&quot;:&quot;Sample Product&quot;,&quot;description&quot;:&quot;This is a sample product description&quot;,&quot;hs_code&quot;:&quot;98051000&quot;,&quot;hs_code_description&quot;:&quot;Portable automatic data processing machines&quot;,&quot;type_of_goods&quot;:&quot;goods&quot;},&quot;invoice&quot;:{&quot;number&quot;:&quot;INV_M8TYYI&quot;,&quot;date&quot;:&quot;2025-09-11&quot;}}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+        </HTTPSamplerProxy>
+        <hashTree/>
+        <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
+          <collectionProp name="HeaderManager.headers">
+            <elementProp name="accept" elementType="Header">
+              <stringProp name="Header.name">accept</stringProp>
+              <stringProp name="Header.value">application/json</stringProp>
+            </elementProp>
+            <elementProp name="x-client-id" elementType="Header">
+              <stringProp name="Header.name">x-client-id</stringProp>
+              <stringProp name="Header.value">8597308631</stringProp>
+            </elementProp>
+            <elementProp name="x-client-secret" elementType="Header">
+              <stringProp name="Header.name">x-client-secret</stringProp>
+              <stringProp name="Header.value">FAED838559DFD1C7FDEF</stringProp>
+            </elementProp>
+            <elementProp name="x-merchant-id" elementType="Header">
+              <stringProp name="Header.name">x-merchant-id</stringProp>
+              <stringProp name="Header.value">8867382876</stringProp>
+            </elementProp>
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">content-type</stringProp>
+              <stringProp name="Header.value">application/json</stringProp>
+            </elementProp>
+          </collectionProp>
+        </HeaderManager>
+        <hashTree/>
+        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <url>true</url>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+        <ResultCollector guiclass="SummaryReport" testclass="ResultCollector" testname="Summary Report">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <url>true</url>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+        <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="JSR223 PreProcessor" enabled="false">
+          <stringProp name="scriptLanguage">groovy</stringProp>
+          <stringProp name="parameters"></stringProp>
+          <stringProp name="filename"></stringProp>
+          <stringProp name="cacheKey">false</stringProp>
+          <stringProp name="script">import java.text.SimpleDateFormat
+
+def sdf = new SimpleDateFormat(&quot;yyyyMMddHHmmssSSS&quot;)
+def uniqueRef = &quot;CARD_&quot; + sdf.format(new Date())
+vars.put(&quot;reference_id&quot;, uniqueRef)</stringProp>
+        </JSR223PreProcessor>
+        <hashTree/>
+        <BeanShellPreProcessor guiclass="TestBeanGUI" testclass="BeanShellPreProcessor" testname="BeanShell PreProcessor">
+          <stringProp name="filename"></stringProp>
+          <stringProp name="parameters"></stringProp>
+          <boolProp name="resetInterpreter">false</boolProp>
+          <stringProp name="script">import java.text.SimpleDateFormat;
+
+SimpleDateFormat sdf = new SimpleDateFormat(&quot;yyyyMMddHHmmssSSS&quot;);
+String uniqueRef = &quot;CARD_&quot; + sdf.format(new Date());
+vars.put(&quot;reference_id&quot;, uniqueRef);</stringProp>
+        </BeanShellPreProcessor>
+        <hashTree/>
+      </hashTree>
+    </hashTree>
+  </hashTree>
+</jmeterTestPlan>
