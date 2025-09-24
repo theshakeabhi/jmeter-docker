@@ -1,2 +1,0 @@
-timeStamp,elapsed,label,responseCode,responseMessage,threadName,dataType,success,failureMessage,bytes,sentBytes,grpThreads,allThreads,URL,Latency,IdleTime,Connect
-1758631694903,1895,HTTP Request,201,Created,Thread Group 1-1,text,true,,1355,1348,1,1,https://api-pacb-uat.eximpe.com/pg/orders/,1891,0,355
