@@ -20,4 +20,12 @@ services:
       - ./results:/results
       - ./reports:/reports
     # Example: add extra -J props or override defaults here
-    # command: ["-Jthreads=200", "-Jrampup=30"]
+    # command: ["-Jthreads=200", "-Jrampup=30"
+  report-server:
+    image: nginx:stable-alpine
+    depends_on:
+      - jmeter
+    volumes:
+      - ./reports/html:/usr/share/nginx/html:ro
+    ports:
+      - "8080:80"
